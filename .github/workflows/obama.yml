@@ -21,3 +21,6 @@ jobs:
         pip install -r requirements.txt
     - name: Display Python version
       run: python -c "import sys; print(sys.version)"
+
+    - name: Post to Twitter
+      run: ./post.py

@@ -9,20 +9,25 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
     - name: Set up Python 3.x
       uses: actions/setup-python@v2
       with:
         python-version: '3.x' 
         architecture: 'x64' 
-    # You can test your matrix by printing the current Python version
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+
     - name: Display Python version
       run: python -c "import sys; print(sys.version)"
 
     - name: Post to Twitter
       env:
-        SECRET_SUBJECT: ${{ secrets.SUBJECT }}
+        TWITTER_ACCESS_TOKEN_KEY: ${{ secrets.TWITTER_OBAMA_ACCESS_TOKEN_KEY }}
+        TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_OBAMA_ACCESS_TOKEN_SECRET }}
+        TWITTER_CONSUMER_KEY: ${{ secrets.TWITTER_OBAMA_CONSUMER_KEY }}
+        TWITTER_CONSUMER_SECRET: ${{ secrets.TWITTER_OBAMA_CONSUMER_SECRET }}
       run: python ./post.py

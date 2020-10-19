@@ -3,7 +3,7 @@ name: Post new thing to Obama Nostalgia twitter account
 on: [push, workflow_dispatch]
 
 jobs:
-  build:
+  post:
 
     runs-on: ubuntu-latest
 
@@ -15,5 +15,9 @@ jobs:
         python-version: '3.x' 
         architecture: 'x64' 
     # You can test your matrix by printing the current Python version
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
     - name: Display Python version
       run: python -c "import sys; print(sys.version)"

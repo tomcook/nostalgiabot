@@ -1,6 +1,10 @@
 name: Post new thing to Obama Nostalgia twitter account
 
-on: [push, workflow_dispatch]
+on: 
+  schedule:
+    - cron:  '15 */6 * * *'
+  
+  workflow_dispatch:
 
 jobs:
   post:

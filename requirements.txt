@@ -1,5 +1,2 @@
-json
-shutil
-random
 requests
 TwitterAPI

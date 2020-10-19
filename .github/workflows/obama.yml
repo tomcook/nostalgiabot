@@ -23,4 +23,4 @@ jobs:
       run: python -c "import sys; print(sys.version)"
 
     - name: Post to Twitter
-      run: ./post.py
+      run: python ./post.py

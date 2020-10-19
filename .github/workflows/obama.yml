@@ -23,4 +23,6 @@ jobs:
       run: python -c "import sys; print(sys.version)"
 
     - name: Post to Twitter
+      env:
+        SECRET_SUBJECT: ${{ secrets.SUBJECT }}
       run: python ./post.py

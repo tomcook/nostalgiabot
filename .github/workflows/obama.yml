@@ -1,4 +1,4 @@
-name: Post new thing to Obama Nostalgia twitter account
+name: Obama Nostalgia Post
 
 on: 
   schedule:

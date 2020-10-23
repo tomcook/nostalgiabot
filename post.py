@@ -59,7 +59,7 @@ print('UPLOAD MEDIA SUCCESS' if r.status_code == 200 else 'UPLOAD MEDIA FAILURE:
 if r.status_code == 200:
     media_id = r.json()['media_id']
     r = api.request('statuses/update', {'status': tweet, 'media_ids': media_id})
-    if r.status_code == 200 
+    if r.status_code == 200: 
         print('UPDATE STATUS SUCCESS')
 
         # Append to the state database

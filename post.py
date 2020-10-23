@@ -7,25 +7,20 @@ import requests
 from datetime import datetime
 from TwitterAPI import TwitterAPI
 
-stateDbGist = 'd34ccb38adf1b9ec9366b892b3e40ae6'
-memoryDbUrl = 'https://raw.githubusercontent.com/tomcook/nostalgiabot-obama/main/memories.json'
-
-githubToken = os.environ.get('GIST_TOKEN')
-
 api = TwitterAPI(os.environ.get('TWITTER_CONSUMER_KEY'), 
                  os.environ.get('TWITTER_CONSUMER_SECRET'),
                  os.environ.get('TWITTER_ACCESS_TOKEN_KEY'),
                  os.environ.get('TWITTER_ACCESS_TOKEN_SECRET'))
 
 # Get the GitHub Gist that contains our state database
-gh = github.Github(githubToken)
-gist = gh.get_gist(stateDbGist)
+gh = github.Github(os.environ.get('GIST_TOKEN'))
+gist = gh.get_gist(os.environ.get('STATE_DB_GIST'))
 
 stateDb = json.loads(gist.files['state.json'].content)
 
 # Get the memories DB
 
-req = requests.get(memoryDbUrl)
+req = requests.get(os.environ.get('MEMORY_DB_URL'))
 memories = req.json()
 
 # Find our random memory to post from the DB

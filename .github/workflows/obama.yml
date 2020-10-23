@@ -34,4 +34,5 @@ jobs:
         TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_OBAMA_ACCESS_TOKEN_SECRET }}
         TWITTER_CONSUMER_KEY: ${{ secrets.TWITTER_OBAMA_CONSUMER_KEY }}
         TWITTER_CONSUMER_SECRET: ${{ secrets.TWITTER_OBAMA_CONSUMER_SECRET }}
+        GIST_TOKEN: ${{ secrets.GIST_TOKEN }}
       run: python ./post.py

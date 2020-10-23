@@ -1,4 +1,4 @@
-name: Post new thing to Obama Nostalgia twitter account
+name: Obama Nostalgia Post
 
 on: 
   schedule:
@@ -36,3 +36,4 @@ jobs:
         TWITTER_CONSUMER_SECRET: ${{ secrets.TWITTER_OBAMA_CONSUMER_SECRET }}
         GIST_TOKEN: ${{ secrets.GIST_TOKEN }}
       run: python ./post.py
+

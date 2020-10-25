@@ -33,7 +33,7 @@ print(f" : Loaded memories DB with {len(memories)} memories")
 chosenMemory = random.choice(memories)
 
 print(" : Memory Chosen")
-pprint(chosenMemory)
+#pprint(chosenMemory)
 
 # Download the memory image
 
@@ -46,7 +46,10 @@ with open('img.jpg', 'wb') as out_file:
 
 tweet = f"{chosenMemory['caption']} {chosenMemory['flickr_url']}\n\nPhoto By {chosenMemory['photographer']}"
 
+print(" : Preview of tweet to be posted")
+print("==================================================================")
 print(tweet)
+print("==================================================================")
 
 # Post to Twitter!
 
@@ -54,7 +57,7 @@ print(tweet)
 file = open('img.jpg', 'rb')
 data = file.read()
 r = api.request('media/upload', None, {'media': data})
-print('UPLOAD MEDIA SUCCESS' if r.status_code == 200 else 'UPLOAD MEDIA FAILURE: ' + r.text)
+print(' : SUCCESS: Photo upload to twitter' if r.status_code == 200 else ' : FAILURE: Photo upload to twitter: ' + r.text)
 
 # STEP 2 - post tweet with a reference to uploaded image
 if r.status_code == 200:
@@ -64,12 +67,13 @@ if r.status_code == 200:
 
         twitterPostData = json.loads(r.text)
 
-        print('UPDATE STATUS SUCCESS')
+        print(' : SUCCESS: Tweet posted')
 
         # Append to the state database
 
         stateDb[chosenMemory['title']] = {"tweet_id":twitterPostData['id'], "posted_on":datetime.now().isoformat()}
 
         gist.edit(files={"state.json": github.InputFileContent(content=json.dumps(stateDb, indent=2))})
+        print(" : State DB updated")
     else:
-        print('UPDATE STATUS FAILURE: ' + r.text)
+        print(' : Failure: Tweet not posted: ' + r.text)

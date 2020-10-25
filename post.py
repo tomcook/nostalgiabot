@@ -18,16 +18,21 @@ gist = gh.get_gist(os.environ.get('STATE_DB_GIST'))
 
 stateDb = json.loads(gist.files['state.json'].content)
 
+print(f" : Loaded state DB with {len(stateDb)} entries")
+
 # Get the memories DB
 
 req = requests.get(os.environ.get('MEMORY_DB_URL'))
 memories = req.json()
 
+print(f" : Loaded memories DB with {len(memories)} memories")
+
 # Find our random memory to post from the DB
 
 chosenMemory = random.choice(memories)
 
-print(chosenMemory)
+print(" : Memory Chosen")
+pprint(chosenMemory)
 
 # Download the memory image
 
@@ -64,6 +69,6 @@ if r.status_code == 200:
 
         stateDb[chosenMemory['title']] = {"tweet_id":twitterPostData['id'], "posted_on":datetime.now().isoformat()}
 
-        gist.edit(files={"state.json": github.InputFileContent(content=json.dumps(stateDb))})
+        gist.edit(files={"state.json": github.InputFileContent(content=json.dumps(stateDb, indent=2))})
     else:
         print('UPDATE STATUS FAILURE: ' + r.text)

@@ -5,6 +5,7 @@ import shutil
 import random
 import pprint
 import requests
+from pprint import pprint
 from datetime import datetime
 from TwitterAPI import TwitterAPI
 
@@ -33,7 +34,9 @@ print(f" : Loaded memories DB with {len(memories)} memories")
 chosenMemory = random.choice(memories)
 
 print(" : Memory Chosen")
-#pprint(chosenMemory)
+print("==================================================================")
+pprint(chosenMemory)
+print("==================================================================")
 
 # Download the memory image
 
@@ -53,27 +56,33 @@ print("==================================================================")
 
 # Post to Twitter!
 
-# STEP 1 - upload image
-file = open('img.jpg', 'rb')
-data = file.read()
-r = api.request('media/upload', None, {'media': data})
-print(' : SUCCESS: Photo upload to twitter' if r.status_code == 200 else ' : FAILURE: Photo upload to twitter: ' + r.text)
+if "DRYRUN" in os.environ:
+    print(" : Dry Run, exiting without posting to twitter")
+else:
+    # STEP 1 - upload image
+    file = open('img.jpg', 'rb')
+    data = file.read()
+    r = api.request('media/upload', None, {'media': data})
+    if r.status_code == 200:
+        print(' : SUCCESS: Photo upload to twitter')
+    else: 
+        raise SystemExit(f" : FAILURE: Photo upload to twitter: {r.text}")
 
-# STEP 2 - post tweet with a reference to uploaded image
-if r.status_code == 200:
-    media_id = r.json()['media_id']
-    r = api.request('statuses/update', {'status': tweet, 'media_ids': media_id})
-    if r.status_code == 200: 
+    # STEP 2 - post tweet with a reference to uploaded image
+    if r.status_code == 200:
+        media_id = r.json()['media_id']
+        r = api.request('statuses/update', {'status': tweet, 'media_ids': media_id})
+        if r.status_code == 200: 
 
-        twitterPostData = json.loads(r.text)
+            twitterPostData = json.loads(r.text)
 
-        print(' : SUCCESS: Tweet posted')
+            print(' : SUCCESS: Tweet posted')
 
-        # Append to the state database
+            # Append to the state database
 
-        stateDb[chosenMemory['title']] = {"tweet_id":twitterPostData['id'], "posted_on":datetime.now().isoformat()}
+            stateDb[chosenMemory['title']] = {"tweet_id":twitterPostData['id'], "posted_on":datetime.now().isoformat()}
 
-        gist.edit(files={"state.json": github.InputFileContent(content=json.dumps(stateDb, indent=2))})
-        print(" : State DB updated")
-    else:
-        print(' : Failure: Tweet not posted: ' + r.text)
+            gist.edit(files={"state.json": github.InputFileContent(content=json.dumps(stateDb, indent=2))})
+            print(" : State DB updated")
+        else:
+            raise SystemExit(f" : FAILURE: Tweet not posted: {r.text}"

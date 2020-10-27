@@ -58,7 +58,7 @@ print("==================================================================")
 
 if "DRY_RUN" in os.environ:
     print(" : Dry Run, exiting without posting to twitter")
-    pass
+    continue
 else:
     # STEP 1 - upload image
     file = open('img.jpg', 'rb')
@@ -87,3 +87,4 @@ else:
             print(" : State DB updated")
         else:
             raise SystemExit(f" : FAILURE: Tweet not posted: {r.text}"
+

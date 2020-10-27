@@ -56,8 +56,9 @@ print("==================================================================")
 
 # Post to Twitter!
 
-if "DRYRUN" in os.environ:
+if "DRY_RUN" in os.environ:
     print(" : Dry Run, exiting without posting to twitter")
+    pass
 else:
     # STEP 1 - upload image
     file = open('img.jpg', 'rb')

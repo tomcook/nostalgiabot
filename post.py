@@ -29,9 +29,23 @@ memories = req.json()
 
 print(f" : Loaded memories DB with {len(memories)} memories")
 
-# Find our random memory to post from the DB
+# Randomly select memories from the database, comparing them to the state database
+#   to make sure they haven't already been posted. If they have then pick a new one.
 
-chosenMemory = random.choice(memories)
+print(" : Choosing a random memory")
+
+while True:
+    # Find our random memory to post from the DB
+
+    chosenMemory = random.choice(memories)
+
+    print(f" : Checking memory '{chosenMemory['title']}'")
+
+    if chosenMemory['title'] in stateDb:
+        print(f" : WARNING: Memory {chosenMemory['title']} already posted; choosing new one...")
+        continue
+    else:
+        break
 
 print(" : Memory Chosen")
 print("==================================================================")

@@ -4,7 +4,7 @@ This is a twitter bot that randomly selects old photos from a data source and po
 
 ## Example
 
-![example tweet](https://raw.githubusercontent.com/tomcook/nostalgiabot/master/example.png)
+![example tweet](https://raw.githubusercontent.com/tomcook/nostalgiabot/main/example.png)
 
 ## Active Accounts
 

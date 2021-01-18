@@ -40,4 +40,4 @@ The bot relies on three sources of data:
 
 ## Contact
 
-I you've got questions or what to chat about this project, the best bet is to reach out to me on twitter. My handle is [@ywxwy](https://twitter.com/ywxwy). All other public contact info is on [tom.horse](https://tom.horse).
+If you've got questions or what to chat about this project, the best bet is to reach out to me on twitter. My handle is [@ywxwy](https://twitter.com/ywxwy). All other public contact info is on [tom.horse](https://tom.horse).

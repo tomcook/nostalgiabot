@@ -8,11 +8,13 @@ This is a twitter bot that randomly selects old photos from a data source and po
 
 ## Active Accounts
 
-Currently this only posts data to the [Obama Nostalgia](https://twitter.com/ObamaNostalgia) twitter account. It can be extended to support other "nostalgia sources"  and multiple bots could run within this repo without too much effort.
+- **[Obama Nostalgia](https://twitter.com/ObamaNostalgia)** - The original bot this was written to enable. Launched just after President Obama left office using his eight years of archived White House Flickr photos. [Source data can be found here](https://github.com/tomcook/nostalgiabot-obama).
+
+- **[Biden Nostalgia](https://twitter.com/BidenNostalgia)** - Posting photos from the Biden campaign and administration. Campaign photos are a frozen-in-time export from Flickr, but administration photos will be periodically scraped out as President Biden's time in office goes on. [Source data can be found here](https://github.com/tomcook/nostalgiabot-biden).
 
 ## Content Licensing
 
-More details on the licensing of this content can be found in each individual content repo's DISCLAIMER file, such as [this one](https://github.com/tomcook/nostalgiabot-obama/blob/main/DISCLAIMER.md) for the Obama archive. I believe that since everything in that repo was produced by employees of the United States Government (meaning they are in the public domain) and I'm using them for a noncommercial purpose then then this use is allowable.
+More details on the licensing of this content can be found in each individual content repo's DISCLAIMER file. Everything in those repos are either produced by employees of the United States Government (meaning they are in the public domain) or licensed under Creative Commons. I'm using them for a noncommercial purpose so it's presumed that this use is allowable. Please contact me if this is inaccurate and I'm happy to remove any photos from the content archives.
 
 ## Cost
 
@@ -24,15 +26,15 @@ The bot relies on three sources of data:
 
 - **This repo** which stores the code and GitHub Actions workflow definition files. Under the [Actions](https://github.com/tomcook/nostalgiabot/actions) menu there are two separate workflows. One automatically executes every six hours and actually posts to twitter, while the other one is for manual invocation only and runs as a "Dry Run" to test the bot without posting to Twitter. The bot is written in Python.
 
-- **Content repos** which hold the [images](https://github.com/tomcook/nostalgiabot-obama/tree/main/photos) and "memory" metadata in a [big json file](https://github.com/tomcook/nostalgiabot-obama/blob/main/memories.json). Right now the only repo in use is [nostalgiabot-obama](https://github.com/tomcook/nostalgiabot-obama).
+- **Content repos** which hold the [images](https://github.com/tomcook/nostalgiabot-obama/tree/main/photos) and "memory" metadata in a [big json file](https://github.com/tomcook/nostalgiabot-obama/blob/main/memories.json).
 
-- **A GitHub Gist** for storing long-term state. We use this to track all of the previously posted memories to ensure that we don't re-post a memory. Instead of storing this in an actual database it seemed workable to use json in a Gist, since they can store up to 10MB of text each. The current database is [here](https://gist.github.com/tomcook/d34ccb38adf1b9ec9366b892b3e40ae6).
+- **A GitHub Gist** for storing long-term state. We use this to track all of the previously posted memories to ensure that we don't re-post a memory. Instead of storing this in an actual database it seemed workable to use json in a Gist, since they can store up to 10MB of text each. For example, the Obama bot's current database is [here](https://gist.github.com/tomcook/d34ccb38adf1b9ec9366b892b3e40ae6).
 
 ## Future Improvements
 
 - The bot right now just blows up if the tweet to be posted is longer than 280 characters. I've attempted to reduce the size of many of the captions provided by the White House/Archives, but many of them are very very long and would require some real editorial judgement to pare down.
 
-- For now the bot operates on a static data source that was "frozen" in 2017 at the end of the Barack Obama administration. I'd like to add more data sources, including those that may be updating in real time, such as currently-ongoing administrations or other sources, but that would require writing a scraper and better parsers to live-extract all the data.
+- I'd like to add more data sources, including those that may be updating in real time, such as currently-ongoing administrations or other sources, but that would require writing a scraper and better parsers to live-extract all the data.
 
 - Eventually the bot will post every memory in its database and break. I'll need to build a process for removing old posts from the state database so they over time be cycled back into rotation. Once that's done the bot can probably run forever, or at least until the Twitter/GitHub APIs implement breaking changes. 
 

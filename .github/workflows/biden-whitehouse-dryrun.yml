@@ -1,9 +1,9 @@
-name: Biden Nostalgia Post
+name: Biden WhiteHouse Nostalgia Post (Dry Run)
+
+env:
+  DRY_RUN: yes
 
 on: 
-  schedule:
-    - cron:  '46 */6 * * *'
-  
   workflow_dispatch:
 
 jobs:
@@ -33,6 +33,6 @@ jobs:
         TWITTER_CONSUMER_SECRET: ${{ secrets.TWITTER_BIDEN_CONSUMER_SECRET }}
         GIST_TOKEN: ${{ secrets.GIST_TOKEN }}
         STATE_DB_GIST: "c302c063a30a2fbe21432c5f02da3465"
-        MEMORY_DB_URL: "https://raw.githubusercontent.com/tomcook/nostalgiabot-biden/main/memories.json"
+        MEMORY_DB_URL: "https://raw.githubusercontent.com/tomcook/nostalgiabot-biden/main/memories-whitehouse.json"
       run: python ./post.py
 

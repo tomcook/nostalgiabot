@@ -33,6 +33,6 @@ jobs:
         TWITTER_CONSUMER_SECRET: ${{ secrets.TWITTER_OBAMA_CONSUMER_SECRET }}
         GIST_TOKEN: ${{ secrets.GIST_TOKEN }}
         STATE_DB_GIST: "d34ccb38adf1b9ec9366b892b3e40ae6"
-        MEMORY_DB_URL: "https://raw.githubusercontent.com/tomcook/nostalgiabot-obama/main/memories.json"
+        MEMORY_DB_URL: "https://raw.githubusercontent.com/tomcook/nostalgiabot/main/content/obama/memories.json"
       run: python ./post.py
 

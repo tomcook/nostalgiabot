@@ -1,8 +1,8 @@
 name: Biden Campaign Nostalgia Post
 
 on: 
-  schedule:
-    - cron:  '46 0,12 * * *'
+#  schedule:
+#    - cron:  '46 0,12 * * *'
   
   workflow_dispatch:
 

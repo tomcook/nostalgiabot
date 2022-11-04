@@ -1,8 +1,8 @@
 name: Biden WhiteHouse Nostalgia Post
 
 on: 
-  schedule:
-    - cron:  '46 6,18 * * *'
+#  schedule:
+#    - cron:  '46 6,18 * * *'
   
   workflow_dispatch:
 

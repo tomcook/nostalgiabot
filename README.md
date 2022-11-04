@@ -1,6 +1,8 @@
 # nostalgiabot
 
-This is a twitter bot that randomly selects old photos from a data source and posts them, along with some metadata, to twitter. It runs entirely within GitHub via [GitHub Actions](https://github.com/features/actions) and has no external dependencies except the Twitter API.
+This was a twitter bot that randomly selected old photos from a data source and posted them, along with some metadata, to twitter. It ran entirely within GitHub via [GitHub Actions](https://github.com/features/actions) and had no external dependencies except the Twitter API.
+
+After twitter's late 2022 change in ownership / direction these bots were disabled out of a desire to contribute no new content or value to a service that has so little regard for its users, employees, customers, or the broader public that relied on it.
 
 ## Example
 
@@ -10,7 +12,7 @@ This is a twitter bot that randomly selects old photos from a data source and po
 
 - **[Obama Nostalgia](https://twitter.com/ObamaNostalgia)** - The original bot this was written to enable. Launched just after President Obama left office using his eight years of archived White House Flickr photos. [Source data can be found here](https://github.com/tomcook/nostalgiabot-obama).
 
-- **[Biden Nostalgia](https://twitter.com/BidenNostalgia)** - Posting photos from the Biden campaign and administration. Campaign photos are a frozen-in-time export from Flickr, but administration photos will be periodically scraped out as President Biden's time in office goes on. [Source data can be found here](https://github.com/tomcook/nostalgiabot-biden).
+- **[Biden Nostalgia](https://twitter.com/BidenNostalgia)** - Posting photos from the Biden campaign and administration. Campaign photos are a frozen-in-time export from Flickr, but administration photos was periodically scraped out as President Biden's time in office went on. [Source data can be found here](https://github.com/tomcook/nostalgiabot-biden).
 
 ## Content Licensing
 
@@ -18,7 +20,7 @@ More details on the licensing of this content can be found in each individual co
 
 ## Cost
 
-GitHub Actions are entirely free for public repositories. All of the data the bot fetches from is also stored in GitHub, either in a repository or as [Gists](https://gist.github.com/). Running this code is entirely cost free. Additionally, I make no money from the bot.
+GitHub Actions are entirely free for public repositories. All of the data the bot fetches from is also stored in GitHub, either in a repository or as [Gists](https://gist.github.com/). Running this code was entirely cost free. Additionally, I made no money from the bot.
 
 ## Resources
 

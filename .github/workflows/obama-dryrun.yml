@@ -1,4 +1,4 @@
-name: Obama Nostalgia Post (Dry Run)
+name: Obama Nostalgia Post (Twitter) (Dry Run)
 
 env:
   DRY_RUN: yes
@@ -34,5 +34,5 @@ jobs:
         GIST_TOKEN: ${{ secrets.GIST_TOKEN }}
         STATE_DB_GIST: "d34ccb38adf1b9ec9366b892b3e40ae6"
         MEMORY_DB_URL: "https://raw.githubusercontent.com/tomcook/nostalgiabot/main/content/obama/memories.json"
-      run: python ./post.py
+      run: python ./post-twitter.py
 

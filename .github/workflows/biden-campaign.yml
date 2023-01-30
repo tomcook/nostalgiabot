@@ -1,4 +1,4 @@
-name: Biden Campaign Nostalgia Post
+name: Biden Campaign Nostalgia Post (Twitter)
 
 on: 
 #  schedule:
@@ -34,5 +34,5 @@ jobs:
         GIST_TOKEN: ${{ secrets.GIST_TOKEN }}
         STATE_DB_GIST: "c302c063a30a2fbe21432c5f02da3465"
         MEMORY_DB_URL: "https://raw.githubusercontent.com/tomcook/nostalgiabot/main/content/biden/memories-campaign.json"
-      run: python ./post.py
+      run: python ./post-twitter.py
 

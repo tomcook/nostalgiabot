@@ -61,7 +61,7 @@ with open('img.jpg', 'wb') as out_file:
 
 # Assemble the tweet text
 
-tweet = f"{chosenMemory['caption']} {chosenMemory['flickr_url']}\n\nPhoto By {chosenMemory['photographer']}"
+tweet = f"{chosenMemory['caption_twitter']} {chosenMemory['flickr_url']}\n\nPhoto By {chosenMemory['photographer_twitter']}"
 
 print(" : Preview of tweet to be posted")
 print("==================================================================")

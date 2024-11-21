@@ -38,6 +38,8 @@ print(" : Choosing a random memory")
 while True:
     # Find our random memory to post from the DB
 
+    chosenMemory = random.choice(memories)
+
     print(f" : Checking memory '{chosenMemory['title']}'")
 
     if chosenMemory['title'] in stateDb:

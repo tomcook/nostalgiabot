@@ -1,8 +1,8 @@
 name: Obama Nostalgia Post (Bluesky)
 
 on: 
-#  schedule:
-#    - cron:  '15 */6 * * *'
+  schedule:
+    - cron:  '15 */6 * * *'
   
   workflow_dispatch:
 

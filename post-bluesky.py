@@ -95,3 +95,10 @@ else:
 
     api.send_image(text=skeet, image=img_data, image_alt=alt_text)
 
+    # Append to the state database
+
+    #stateDb[chosenMemory['title']] = {"tweet_id":twitterPostData['id'], "posted_on":datetime.now().isoformat()}
+
+    #gist.edit(files={"state.json": github.InputFileContent(content=json.dumps(stateDb, indent=2))})
+    #print(" : State DB updated")
+

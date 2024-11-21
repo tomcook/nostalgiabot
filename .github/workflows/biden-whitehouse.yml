@@ -1,8 +1,8 @@
 name: Biden WhiteHouse Nostalgia Post (Bluesky)
 
 on: 
-#  schedule:
-#    - cron:  '46 6,18 * * *'
+  schedule:
+    - cron:  '46 6,18 * * *'
   
   workflow_dispatch:
 

@@ -1,3 +1,5 @@
 requests
+pillow
+regex
 PyGithub
 atproto

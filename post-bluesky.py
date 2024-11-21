@@ -97,8 +97,8 @@ else:
 
     # Append to the state database
 
-    #stateDb[chosenMemory['title']] = {"tweet_id":twitterPostData['id'], "posted_on":datetime.now().isoformat()}
+    stateDb[chosenMemory['title']] = {"posted_on":datetime.now().isoformat()}
 
-    #gist.edit(files={"state.json": github.InputFileContent(content=json.dumps(stateDb, indent=2))})
-    #print(" : State DB updated")
+    gist.edit(files={"state-bluesky.json": github.InputFileContent(content=json.dumps(stateDb, indent=2))})
+    print(" : State DB updated")
 

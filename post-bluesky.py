@@ -2,7 +2,7 @@ import os
 import json
 import github
 import shutil
-import regex
+#import regex
 import random
 import pprint
 import requests

@@ -2,7 +2,7 @@ import os
 import json
 import github
 import shutil
-#import regex
+import regex
 import random
 import pprint
 import requests
@@ -19,7 +19,7 @@ api.login(os.environ.get('BLUESKY_USERNAME'), os.environ.get('BLUESKY_PASSWORD')
 gh = github.Github(os.environ.get('GIST_TOKEN'))
 gist = gh.get_gist(os.environ.get('STATE_DB_GIST'))
 
-stateDb = json.loads(gist.files['state.json'].content)
+stateDb = json.loads(gist.files['state-bluesky.json'].content)
 
 print(f" : Loaded state DB with {len(stateDb)} entries")
 

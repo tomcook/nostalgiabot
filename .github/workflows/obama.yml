@@ -1,4 +1,4 @@
-name: Obama Nostalgia Post (Twitter)
+name: Obama Nostalgia Post (Bluesky)
 
 on: 
 #  schedule:
@@ -25,14 +25,12 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Post to Twitter
+    - name: Post to Bluesky
       env:
-        TWITTER_ACCESS_TOKEN_KEY: ${{ secrets.TWITTER_OBAMA_ACCESS_TOKEN_KEY }}
-        TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_OBAMA_ACCESS_TOKEN_SECRET }}
-        TWITTER_CONSUMER_KEY: ${{ secrets.TWITTER_OBAMA_CONSUMER_KEY }}
-        TWITTER_CONSUMER_SECRET: ${{ secrets.TWITTER_OBAMA_CONSUMER_SECRET }}
+        BLUESKY_USERNAME: ${{ secrets.BLUESKY_OBAMA_USERNAME }}
+        BLUESKY_PASSWORD: ${{ secrets.BLUESKY_OBAMA_PASSWORD }}
         GIST_TOKEN: ${{ secrets.GIST_TOKEN }}
-        STATE_DB_GIST: "d34ccb38adf1b9ec9366b892b3e40ae6"
+        STATE_DB_GIST: "c7790229473f2701f878aedd03c3e5a1"
         MEMORY_DB_URL: "https://raw.githubusercontent.com/tomcook/nostalgiabot/main/content/obama/memories.json"
-      run: python ./post-twitter.py
+      run: python ./post-bluesky.py
 

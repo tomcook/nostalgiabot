@@ -1,9 +1,12 @@
-name: Biden WhiteHouse Nostalgia Post (Twitter) (Dry Run)
+name: Biden WhiteHouse Nostalgia Post (Bluesky)
 
 env:
   DRY_RUN: yes
 
 on: 
+#  schedule:
+#    - cron:  '46 6,18 * * *'
+  
   workflow_dispatch:
 
 jobs:
@@ -25,14 +28,12 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Post to Twitter
+    - name: Post to Bluesky
       env:
-        TWITTER_ACCESS_TOKEN_KEY: ${{ secrets.TWITTER_BIDEN_ACCESS_TOKEN_KEY }}
-        TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_BIDEN_ACCESS_TOKEN_SECRET }}
-        TWITTER_CONSUMER_KEY: ${{ secrets.TWITTER_BIDEN_CONSUMER_KEY }}
-        TWITTER_CONSUMER_SECRET: ${{ secrets.TWITTER_BIDEN_CONSUMER_SECRET }}
+        BLUESKY_USERNAME: ${{ secrets.BLUESKY_BIDEN_USERNAME }}
+        BLUESKY_PASSWORD: ${{ secrets.BLUESKY_BIDEN_PASSWORD }}
         GIST_TOKEN: ${{ secrets.GIST_TOKEN }}
-        STATE_DB_GIST: "c302c063a30a2fbe21432c5f02da3465"
+        STATE_DB_GIST: "4caadfb88fedfa23d290122b0937eddc"
         MEMORY_DB_URL: "https://raw.githubusercontent.com/tomcook/nostalgiabot/main/content/biden/memories-whitehouse.json"
-      run: python ./post-twitter.py
+      run: python ./post-bluesky.py
 

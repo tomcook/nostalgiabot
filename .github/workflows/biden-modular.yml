@@ -32,3 +32,7 @@ jobs:
         MEMORY_DB_URL: "https://raw.githubusercontent.com/tomcook/nostalgiabot/main/content/biden/memories-whitehouse.json"
       run: python ./select-memory.py
 
+    - uses: actions/upload-artifact@v4
+      with:
+        name: memory
+        path: memory.json

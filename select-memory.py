@@ -42,3 +42,6 @@ print(" : Memory Chosen")
 print("==================================================================")
 pprint(chosenMemory)
 print("==================================================================")
+
+with open(os.environ['GITHUB_OUTPUT'], 'a') as github_output:
+    github_output.write(json.dumps(chosenMemory))

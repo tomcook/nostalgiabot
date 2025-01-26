@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  post:
+  prepare:
 
     runs-on: ubuntu-latest
 
@@ -28,6 +28,26 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
+    - name: Select a memory to post
+      env:
+        GIST_TOKEN: ${{ secrets.GIST_TOKEN }}
+        STATE_DB_GIST: "4caadfb88fedfa23d290122b0937eddc"
+        MEMORY_DB_URL: "https://raw.githubusercontent.com/tomcook/nostalgiabot/main/content/biden/memories-whitehouse.json"
+      run: python ./select-memory.py
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: memory
+        path: memory.json
+
+    - name: Fetch the image from Flickr
+      run: python ./fetch-image.py
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: images
+        path: '*.jpg'
+
     - name: Post to Bluesky
       env:
         BLUESKY_USERNAME: ${{ secrets.BLUESKY_BIDEN_USERNAME }}
@@ -36,4 +56,3 @@ jobs:
         STATE_DB_GIST: "4caadfb88fedfa23d290122b0937eddc"
         MEMORY_DB_URL: "https://raw.githubusercontent.com/tomcook/nostalgiabot/main/content/biden/memories-whitehouse.json"
       run: python ./post-bluesky.py
-

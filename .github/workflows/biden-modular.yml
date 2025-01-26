@@ -36,3 +36,11 @@ jobs:
       with:
         name: memory
         path: memory.json
+
+    - name: Fetch the image from Flickr
+      run: python ./fetch-image.py
+
+    - uses: actions/upload-artifact@v4
+      with:
+        name: images
+        path: *.jpg

@@ -20,6 +20,9 @@ stateDb = json.loads(gist.files['state-bluesky.json'].content)
 
 print(f" : Loaded state DB with {len(stateDb)} entries")
 
+with open('memory.json', 'r') as f:
+    chosenMemory = json.load(f)
+
 # Assemble the skeet text
 
 skeet = client_utils.TextBuilder()

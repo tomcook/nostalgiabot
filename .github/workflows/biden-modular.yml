@@ -44,3 +44,12 @@ jobs:
       with:
         name: images
         path: '*.jpg'
+
+    - name: Post to Bluesky
+      env:
+        BLUESKY_USERNAME: ${{ secrets.BLUESKY_BIDEN_USERNAME }}
+        BLUESKY_PASSWORD: ${{ secrets.BLUESKY_BIDEN_PASSWORD }}
+        GIST_TOKEN: ${{ secrets.GIST_TOKEN }}
+        STATE_DB_GIST: "4caadfb88fedfa23d290122b0937eddc"
+        MEMORY_DB_URL: "https://raw.githubusercontent.com/tomcook/nostalgiabot/main/content/biden/memories-whitehouse.json"
+      run: python ./post-bluesky.py
